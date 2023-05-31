@@ -1,12 +1,26 @@
 public class DateTime extends Date {
     private int minute = 0;
     private int hour = 0;
+
+    /**
+     * constructor to DateTime
+     * @param myYear
+     * @param myMonth
+     * @param myDay
+     * @param myMinute
+     * @param myHour
+     */
     public DateTime(int myYear,int myMonth,int myDay,int myMinute,int myHour){
         super(myYear,myMonth,myDay);
         setHour(myHour);
         setMinute(myMinute);
     }
 
+    /**
+     *      * this function override the equals method
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)    return true;
@@ -15,6 +29,10 @@ public class DateTime extends Date {
         return super.day==newobj.day && super.month== newobj.month && super.year==newobj.year && this.hour==newobj.hour && this.minute==newobj.minute ;
     }
 
+    /**
+     *      * this function override the toString method
+     * @return
+     */
     @Override
     public String toString() {
         String superToString = super.toString();
@@ -37,16 +55,28 @@ public class DateTime extends Date {
     }
 
 
+    /**
+     *      * this function override the hashcode method
+     * @return
+     */
     @Override
     public int hashCode() {
         String finalString = String.valueOf(this.year) + String.valueOf(this.month)+String.valueOf(this.day)+String.valueOf(this.minute) + String.valueOf(this.hour);
         return Integer.valueOf(finalString);
     }
 
+    /**
+     * set to minute
+     * @param minute
+     */
     public void setMinute(int minute) {
         if(minute<=59 && minute>=0) this.minute = minute;
     }
 
+    /**
+     * set to hour
+     * @param hour
+     */
     public void setHour(int hour) {
         if(hour<=23 && hour>=0) this.hour = hour;
     }
