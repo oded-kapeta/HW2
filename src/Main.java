@@ -6,6 +6,10 @@ public class Main {
     public static void main(String[] args) {
         testPartA();
         //testPartB();
+        double [] arr = {1,-2,2,1};
+        String bla = returnwquasion(arr);
+        System.out.println(bla);
+        returnvalue( -2,arr);
     }
 
     /**
@@ -52,7 +56,75 @@ public class Main {
         dt2.setMinute(59);
         System.out.println("dt2: " + dt2);
 
+    }
 
+    public static String returnwquasion(double [] polynom) {
+        String ourPolyinom = "(";
+        if (polynom[0] == (int)polynom[0]){
+            if ((int)polynom[0] > 0){
+                ourPolyinom = ourPolyinom + String.valueOf((int)polynom[0]) + " ";
+            }
+            if ((int)polynom[0] < 0){
+                ourPolyinom = ourPolyinom + "- " +String.valueOf(-(int)polynom[0]) + " ";
+            }
+        }else{
+            if ((int)polynom[0] > 0){
+                ourPolyinom = ourPolyinom  + String.valueOf(polynom[0])  + " ";
+            }
+            if ((int)polynom[0] < 0){
+                ourPolyinom = ourPolyinom + "- " +String.valueOf(-polynom[0])  + " ";
+            }
+        }
+        for (int i = 1; i < polynom.length;i++){
+            if(polynom[i] == 0.0) continue;
+            if (polynom[i] == 1){
+                ourPolyinom = ourPolyinom + "+ x^" + String.valueOf(i) + " ";
+                continue;
+            }
+            if (polynom[i] == -1){
+                ourPolyinom = ourPolyinom + "- x^" + String.valueOf(i) + " ";
+                continue;
+            }
+            if (polynom[i] == (int)polynom[i]){
+                if ((int)polynom[i] > 0){
+                    ourPolyinom = ourPolyinom + "+ " +String.valueOf((int)polynom[i]) + "x^" + String.valueOf(i) + " ";
+                }
+                if ((int)polynom[i] < 0){
+                    ourPolyinom = ourPolyinom + "- " +String.valueOf(-(int)polynom[i]) + "x^" + String.valueOf(i) + " ";
+                }
+            }else{
+                if ((int)polynom[i] > 0){
+                    ourPolyinom = ourPolyinom + "+ " +String.valueOf(polynom[i]) + "x^" + String.valueOf(i) + " ";
+                }
+                if ((int)polynom[i] < 0){
+                    ourPolyinom = ourPolyinom + "- " +String.valueOf(-polynom[i]) + "x^" + String.valueOf(i) + " ";
+                }
+            }
+        }
+        ourPolyinom = ourPolyinom + ")";
+        return ourPolyinom;
+    }
+
+    public static double returnvalue(double x, double[]polynom){
+        double sum = polynom[0];
+        for (int i = 1;i < polynom.length;i++){
+            System.out.println("SUM IS: " + sum +"   " + power(x,i) + "   " +  polynom[i]*power(x,i) +"   " + i);
+            sum+= polynom[i]*power(x,i);
+        }
+        System.out.println(sum);
+        return sum;
+    }
+
+    public static double power(double x,int exp){
+        if(exp == 0) return 1;
+        if (exp == 1)   return x;
+        double newx = x;
+
+        while (exp >1){
+            newx *= x;
+            exp--;
+        }
+        return newx;
     }
 
 
