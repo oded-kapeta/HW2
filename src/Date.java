@@ -3,10 +3,10 @@ public class Date {
     public int month = 1;
     public int year = 0;
 
-    public Date(int myyear,int mymonth,int myday){
-        setDay(myday);
-        setYear(myyear);
-        setMonth(mymonth);
+    public Date(int myYear, int myMonth, int myDay){
+        setDay(myDay);
+        setYear(myYear);
+        setMonth(myMonth);
     }
 
     @Override
@@ -27,9 +27,7 @@ public class Date {
         int lengthYear = yearString.length();
         while (lengthYear<4 || lengthDay<2 || lengthMonth<2){
             if (lengthYear < 4){
-                System.out.println(yearString);
                 yearString = "0"+yearString;
-                System.out.println(yearString);
                 lengthYear++;
             }
             if (lengthMonth < 2){
@@ -47,7 +45,7 @@ public class Date {
 
     @Override
     public int hashCode() {
-        return 3999*this.year + 31*this.month + 12*this.year;
+        return 3999*this.year + 31*this.day + 12*this.month;
     }
 
     public void setDay(int day) {

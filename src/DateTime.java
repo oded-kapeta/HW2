@@ -1,10 +1,10 @@
 public class DateTime extends Date {
     private int minute = 0;
     private int hour = 0;
-    public DateTime(int myday,int mymonth,int myyear,int myminute,int myhour){
-        super(myyear,mymonth,myday);
-        setHour(myhour);
-        setMinute(myminute);
+    public DateTime(int myYear,int myMonth,int myDay,int myMinute,int myHour){
+        super(myYear,myMonth,myDay);
+        setHour(myHour);
+        setMinute(myMinute);
     }
 
     @Override
@@ -39,7 +39,8 @@ public class DateTime extends Date {
 
     @Override
     public int hashCode() {
-        return 3999*this.year + 31*this.month + 12*this.year + 23*this.hour + 59*this.minute;
+        String finalString = String.valueOf(this.year) + String.valueOf(this.month)+String.valueOf(this.day)+String.valueOf(this.minute) + String.valueOf(this.hour);
+        return Integer.valueOf(finalString);
     }
 
     public void setMinute(int minute) {
