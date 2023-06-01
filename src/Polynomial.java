@@ -26,11 +26,11 @@ public class Polynomial extends  Function{
         }
         for (int i = 1; i < this.polynom.length;i++){
             if(polynom[i] == 0.0) continue;
-            if (polynom[i] == 1){
+            if (polynom[i] == 1.0){
                 ourPolyinom = ourPolyinom + "+ x^" + String.valueOf(i) + " ";
                 continue;
             }
-            if (polynom[i] == -1){
+            if (polynom[i] == -1.0){
                 ourPolyinom = ourPolyinom + "- x^" + String.valueOf(i) + " ";
                 continue;
             }
