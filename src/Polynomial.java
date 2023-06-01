@@ -6,9 +6,24 @@ public class Polynomial extends  Function{
             polynom[i] = x[i];
         }
     }
+
+    public sum(Function a1,Function a1){
+        this.f1  = a1;
+        this.f1  = a1
+    }
+
+    a1.to
     @Override
     public String toString() {
         String ourPolyinom = "(";
+        for (int i = 0 ; i<polynom.length; i++){
+            ourPolyinom = ourPolyinom + new Product(
+                    new Constant(polynom[i]), new Power(new Polynomial([0,1]),i)
+            ).toString();
+            ourPolyinom = ourPolyinom + "+";
+        }
+        ourPolyinom = ourPolyinom + ")";
+
         if (polynom[0] == (int)polynom[0]){
             if ((int)polynom[0] > 0){
                 ourPolyinom = ourPolyinom + String.valueOf((int)polynom[0]) + " ";
