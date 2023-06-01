@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         testPartA();
         //testPartB();
-        double [] arr = {1,-2,2,1};
+        double [] arr = {1.0,-2,2,-1.0};
         String bla = returnwquasion(arr);
         System.out.println(bla);
         returnvalue( -2,arr);
@@ -108,7 +108,6 @@ public class Main {
     public static double returnvalue(double x, double[]polynom){
         double sum = polynom[0];
         for (int i = 1;i < polynom.length;i++){
-            System.out.println("SUM IS: " + sum +"   " + power(x,i) + "   " +  polynom[i]*power(x,i) +"   " + i);
             sum+= polynom[i]*power(x,i);
         }
         System.out.println(sum);
