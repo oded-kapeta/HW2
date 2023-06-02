@@ -4,12 +4,19 @@ public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
-        testPartA();
+        //testPartA();
         //testPartB();
         double [] arr = {1.0,-2,2,-1.0};
-        String bla = returnwquasion(arr);
-        System.out.println(bla);
-        returnvalue( -2,arr);
+        p(arr);
+        //String bla = returnwquasion(arr);
+        //System.out.println(bla);
+        //returnvalue( -2,arr);
+    }
+
+    public static void p(double...x){
+        for (int i =0 ;i < x.length;i++){
+            System.out.println(x[i]);
+        }
     }
 
     /**

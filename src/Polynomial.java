@@ -11,13 +11,12 @@ public class Polynomial extends Function{
     @Override
     public String toString() {
         String ourPolynom = "(";
-
         for(int i = 0; i< polynom.length;i++){
             if (polynom[i] == 0.0 )   continue;
-            ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0,1),new Constant(i)))
+            ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0.0,1.0),new Constant(i)))
                     .toString();
-            if (i == polynom.length-1)  break;
-            ourPolynom += "+";
+            if (i == polynom.length - 1)    break;
+            ourPolynom += " + ";
         }
         ourPolynom += ")";
         /*
@@ -72,9 +71,20 @@ public class Polynomial extends Function{
     public double valueAt(double x) {
         double sum = polynom[0];
         for (int i = 1;i < polynom.length;i++){
-            sum+= polynom[i]*power(x,i);
+            sum+= polynom[i]*Math.pow(x,i);
         }
         return sum;
+    }
+
+    @Override
+    public Function derivative() {
+        Constant const1 = new Constant(0);
+        Function [] arr = new Function[polynom.length];
+        for (int i = 0;i < polynom.length;i++){
+            arr[i] =new Product(new Constant(polynom[i]).derivative(),new Power(new Polynomial(0,1),new Constant(i))
+                    .derivative());
+        }
+        return new MultiSum(const1,arr);
     }
 
     public double[] getPolynom() {

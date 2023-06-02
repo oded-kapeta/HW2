@@ -8,8 +8,7 @@ public class Power extends Function{
 
     @Override
     public String toString() {
-        double [] arr = {0,1.0};
-        if (this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr)){
+        if (isX() == true){
             return "x^" + exponent.toString();
         }
         return "(" + this.function.toString() + "^" + exponent.toString()  + ")";
@@ -17,17 +16,31 @@ public class Power extends Function{
 
     @Override
     public double valueAt(double x) {
-        if (exponent.valueAt(1) == 0)  return 1;
+        if (exponent.getConstant() == 0)  return 1;
         double value = this.function.valueAt(x);
-        return Math.pow(value,x);
+        return Math.pow(value,exponent.getConstant());
     }
 
     @Override
-    public String derivative() {
-        if (this.exponent.valueAt(1)== 1)   return this.function.derivative();
-        Power p = new Power(function,new Constant(exponent.valueAt(1)-1));
-        String tempString = "(" + String.valueOf(exponent.valueAt(1)-1) ;
-        String tempString2 = "*" + new Power(function,new Constant(exponent.valueAt(1)-1)).toString();
-        String tempString3 = "*" +  (function.derivative()).toString() + ")";
+    public Function derivative() {
+        if (exponent.getConstant() > 1){
+            Constant newconst = new Constant(exponent.getConstant());
+            Power newpow = new Power(this.function,new Constant(exponent.getConstant()-1));
+            return new MultiProduct(newconst,newpow,function.derivative());
+        }
+        return new Product(new Constant(1),function.derivative());
+    }
+
+    public boolean isX() {
+        double[] arr = {0, 1.0};
+        if (this.function.getClass() == Polynomial.class && ((Polynomial) function).getPolynom().equals(arr)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isExponentZero(){
+        if(this.exponent.getConstant() == 0)    return true;
+        return false;
     }
 }
