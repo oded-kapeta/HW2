@@ -3,17 +3,17 @@ public abstract class Function {
     {
         double left = a;
         double right = b;
-        while((right-left)< epsilon)
+        while((right-left) > epsilon)
         {
             double mid = (left+right)/2;
-            if((this.valueAt(right)*this.valueAt(left))<0)
-            {
+            if((this.valueAt(left)*this.valueAt(mid)) > 0) {
                 left = mid;
             }
-            else
+            else{
                 right = mid;
+            }
         }
-        return ((right - left)/2);
+        return ((left+right)/2);
 
     }
     public double bisectionMethod(double a, double b)
@@ -21,24 +21,24 @@ public abstract class Function {
         double left = a;
         double right = b;
         double defaultError = Math.pow(10,-5);
-        while((right-left) < defaultError )
+        while((right-left) > defaultError)
         {
             double mid = (left+right)/2;
-            if((this.valueAt(right)*this.valueAt(left))<0)
-            {
+            if((this.valueAt(left)*this.valueAt(mid)) > 0) {
                 left = mid;
             }
-            else
+            else{
                 right = mid;
+            }
         }
-        return ((right - left)/2);
+        return ((left+right)/2);
     }
 
     public double newtonRaphsonMethod(double a)
     {
         double xK = a;
         double deafultError = Math.pow(10,-5);
-        while(Math.abs(this.valueAt(xK))<deafultError)
+        while(Math.abs(this.valueAt(xK)) >= deafultError)
         {
             xK = xK - ((this.valueAt(xK))/(this.derivative().valueAt(xK)));
         }
@@ -48,7 +48,7 @@ public abstract class Function {
     public double newtonRaphsonMethod(double a, double epsilon)
     {
         double xK = a;
-        while(Math.abs(this.valueAt(xK))<epsilon)
+        while(Math.abs(this.valueAt(xK)) >= epsilon)
         {
             xK = xK - ((this.valueAt(xK))/(this.derivative().valueAt(xK)));
         }
