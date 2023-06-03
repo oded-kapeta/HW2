@@ -55,12 +55,21 @@ public abstract class Function {
         return xK;
     }
 
-    public double taylorPolynomial(int n)
+    public Function taylorPolynomial(int n)
     {
-        double taylor = this.valueAt(0);
+        double [] arr = new double[n];
+        Polynomial taylor = new Polynomial();
+        Function derivative= this;
+        int factorial = 1;
 
         for (int i=1; i<=n;i++)
         {
+            factorial = factorial*i;
+            for (int j=1; j<i;j++)
+            {
+                derivative = this.derivative();
+            }
+            arr[i] = derivative.valueAt(0)/factorial;
 
 
         }
