@@ -55,7 +55,7 @@ public abstract class Function {
         return xK;
     }
 
-    public double[] taylorPolynomial(int n)
+    public Function taylorPolynomial(int n)
     {
         double [] arr = new double[n];
         Polynomial taylor = new Polynomial();
@@ -70,7 +70,7 @@ public abstract class Function {
             derivative = derivative.derivative();
 
         }
-        return arr;
+        return new Polynomial(arr);
     }
 
     @Override
