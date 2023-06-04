@@ -21,7 +21,7 @@ public class Quotient extends Function{
         Product product1 = new Product(f1.derivative(),f2);
         Product product2 = new Product(f2.derivative(),f1);
         Difference dif1 = new Difference(product1, product2);
-        Power pow1 = new Power(f2,new Constant(2));
+        Power pow1 = new Power(f2,2);
         return new Quotient(dif1,pow1);
     }
 }

@@ -57,20 +57,18 @@ public abstract class Function {
 
     public Function taylorPolynomial(int n)
     {
-        double [] arr = new double[n];
-        Polynomial taylor = new Polynomial();
+        double [] arr = new double[n+1];
         Function derivative= this.derivative();
         int factorial = 1;
         arr[0] = this.valueAt(0);
-
         for (int i=1; i<=n;i++)
         {
             factorial = factorial*i;
             arr[i] = derivative.valueAt(0)/factorial;
             derivative = derivative.derivative();
-
         }
         return new Polynomial(arr);
+        //((((((((0) * (-1709)) + ((0) * (12345))) - 0)(((1) * (((1) * (1)))) + ((0) * (((1) * (1)))) + ((1) * (((2) * x^1 * )))))) * ((((12345)((12.391709)))) * (-1709)))) - ((((()) * (-1709)) + ((0) * ((12345)((12.391709))))))) * ((((12345) * (-1709)) - (12.391709))(1 + x^2))))) / ((((12345)((12.391709)))) * (-1709))^2))
     }
 
     @Override

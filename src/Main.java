@@ -4,13 +4,9 @@ public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
-        //testPartA();
-        //testPartB();
-        double [] arr = {1.0,-2,2,-1.0};
-        p(arr);
-        //String bla = returnwquasion(arr);
-        //System.out.println(bla);
-        //returnvalue( -2,arr);
+        testPartA();
+        testPartB();
+
     }
 
     public static void p(double...x){
@@ -137,7 +133,7 @@ public class Main {
     /**
      * Performs tests of part B.
      */
-    /*
+
     private static void testPartB() {
         System.out.println("-------------------- Tests for part B --------------------");
         rnd = new Random(42);
@@ -241,12 +237,12 @@ public class Main {
 
         testRootFinding();
     }
-     */
+
 
     /**
      * Tests the methods of a given function.
      */
-    /*
+
     private static void testFunction(Function function, String name, int taylorMaxOrder) {
         System.out.println(name + ": " + function);
         System.out.println(name + " with toString: " + function.toString());
@@ -274,15 +270,13 @@ public class Main {
         }
     }
 
-     */
-
     /**
      * Rounds a given number up to 3 decimal places.
      *
      * @param num The number to round
      * @return The rounded number
      */
-    /*
+
     private static double roundThreePlaces(double num) {
         return Double.parseDouble(String.format("%.3f", num));
     }
@@ -334,5 +328,4 @@ public class Main {
         }
     }
 
-     */
 }

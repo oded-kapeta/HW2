@@ -8,6 +8,12 @@ public class Product extends Function{
 
     @Override
     public String toString() {
+        if (function1.getClass() == Constant.class && function2.getClass() != Constant.class && ((Constant)function1).getConstant() == 0){
+            return "0";
+        }
+        if (function2.getClass() == Constant.class && function1.getClass() != Constant.class &&((Constant)function2).getConstant() == 0){
+            return "0";
+        }
         if (function1.getClass() == Constant.class && function2.getClass() == Power.class ){
             if (((Power)function2).isX() == true){
                 if ((((Power)function2).isExponentZero()) == true){

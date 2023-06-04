@@ -1,7 +1,7 @@
 public class Power extends Function{
-    private Constant exponent;
+    private int exponent;
     private Function function;
-    public Power(Function function1,Constant exponent1){
+    public Power(Function function1,int exponent1){
         this.exponent = exponent1;
         this.function = function1;
     }
@@ -9,38 +9,65 @@ public class Power extends Function{
     @Override
     public String toString() {
         if (isX() == true){
-            return "x^" + exponent.toString();
+            return "x^" + String.valueOf(exponent);
         }
-        return "(" + this.function.toString() + "^" + exponent.toString()  + ")";
+        return "(" + this.function.toString() + "^" + String.valueOf(exponent)  + ")";
     }
 
     @Override
     public double valueAt(double x) {
-        if (exponent.getConstant() == 0)  return 1;
+        if (exponent == 0)  return 1;
         double value = this.function.valueAt(x);
-        return Math.pow(value,exponent.getConstant());
+        return Math.pow(value,exponent);
     }
 
     @Override
     public Function derivative() {
-        if (exponent.getConstant() > 1){
-            Constant newconst = new Constant(exponent.getConstant());
-            Power newpow = new Power(this.function,new Constant(exponent.getConstant()-1));
+        double[] arr = {0,1};
+
+       // System.out.println(this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr));
+        if (exponent == 0)  return new Constant(0);
+        if (exponent > 1){
+            Constant newconst = new Constant(exponent);
+            Power newpow = new Power(this.function,exponent - 1);
+            if (isX() == true){
+                return new MultiProduct(newconst,newpow,new Constant(1));
+            }
             return new MultiProduct(newconst,newpow,function.derivative());
+        }
+        if (isX() == true){
+            return new Product(new Constant(1),new Constant(1));
         }
         return new Product(new Constant(1),function.derivative());
     }
 
     public boolean isX() {
-        double[] arr = {0, 1.0};
-        if (this.function.getClass() == Polynomial.class && ((Polynomial) function).getPolynom().equals(arr)) {
+        double[] arr = {0,1};
+        /*
+        System.out.println(((Polynomial)function).getPolynom());
+        System.out.println(this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr));
+        if (this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr)) {
+            System.out.println(((Polynomial)function).getPolynom());
+        }
+        return false;
+
+         */
+
+
+
+       if (this.function.getClass() == Polynomial.class){
+            for (int i = 0; i < ((Polynomial)function).getLength();i++){
+                if (arr[i] != ((Polynomial)function).getPlace(i))    return  false;
+            }
             return true;
         }
         return false;
+
+
     }
 
     public boolean isExponentZero(){
-        if(this.exponent.getConstant() == 0)    return true;
+        if(this.exponent == 0)    return true;
         return false;
     }
 }

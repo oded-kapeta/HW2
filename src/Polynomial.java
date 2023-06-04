@@ -11,14 +11,16 @@ public class Polynomial extends Function{
     @Override
     public String toString() {
         String ourPolynom = "(";
+
         for(int i = 0; i< polynom.length;i++){
             if (polynom[i] == 0.0 )   continue;
-            ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0.0,1.0),new Constant(i)))
+            ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0,1),i))
                     .toString();
             if (i == polynom.length - 1)    break;
             ourPolynom += " + ";
         }
         ourPolynom += ")";
+
         /*
         if (polynom[0] == (int)polynom[0]){
             if ((int)polynom[0] > 0){
@@ -61,9 +63,8 @@ public class Polynomial extends Function{
                 }
             }
         }
-        ourPolynom = ourPolynom + ")";
-
          */
+
         return ourPolynom;
     }
 
@@ -81,7 +82,10 @@ public class Polynomial extends Function{
         Constant const1 = new Constant(0);
         Function [] arr = new Function[polynom.length];
         for (int i = 0;i < polynom.length;i++){
-            arr[i] =new Product(new Constant(polynom[i]).derivative(),new Power(new Polynomial(0,1),new Constant(i))
+            if (polynom[i] == 0.0){
+                arr[i] = new Constant(0);
+            }
+            arr[i] = new Product(new Constant(polynom[i]),new Power(new Polynomial(0,1),i)
                     .derivative());
         }
         return new MultiSum(const1,arr);
@@ -89,5 +93,13 @@ public class Polynomial extends Function{
 
     public double[] getPolynom() {
         return polynom;
+    }
+
+    public int getLength(){
+        return polynom.length;
+    }
+
+    public double getPlace(int i){
+        return polynom[i];
     }
 }
