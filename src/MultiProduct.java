@@ -20,11 +20,7 @@ public class MultiProduct extends Function{
         }
         for (int i = 0 ;i < fx.length;i++){
             if (fx[i].toString().equals("1"))  continue;
-            if (fx[i].getClass() == Constant.class){
-                finalString = finalString + "(" + fx[i].toString() + ")";
-            }else {
-                finalString = finalString +  fx[i].toString();
-            }
+            finalString = finalString +  fx[i].toString();
             if (i == fx.length-1)   break;
             finalString = finalString + " * ";
         }
@@ -51,8 +47,10 @@ public class MultiProduct extends Function{
         Function [] tempArr = new Function[arrUnit.length-1];
         Function [] finalArr = new Function[arrUnit.length];
         for (int i = 0; i < arrUnit.length;i++){
-            for (int j = 0; j < arrUnit.length;j++){
-                if(i == j)  continue;
+            for (int j = 0; j < i;j++){
+                tempArr[j] = arrUnit[j];
+            }
+            for (int j = i+1; j < tempArr.length;j++){
                 tempArr[j] = arrUnit[j];
             }
             finalArr[i] = new MultiProduct(arrUnit[i].derivative(), tempArr);

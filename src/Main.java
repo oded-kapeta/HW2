@@ -6,13 +6,6 @@ public class Main {
     public static void main(String[] args) {
         testPartA();
         testPartB();
-
-    }
-
-    public static void p(double...x){
-        for (int i =0 ;i < x.length;i++){
-            System.out.println(x[i]);
-        }
     }
 
     /**
@@ -58,82 +51,11 @@ public class Main {
         dt2.setMonth(-10);
         dt2.setMinute(59);
         System.out.println("dt2: " + dt2);
-
     }
-
-    public static String returnwquasion(double [] polynom) {
-        String ourPolyinom = "(";
-        if (polynom[0] == (int)polynom[0]){
-            if ((int)polynom[0] > 0){
-                ourPolyinom = ourPolyinom + String.valueOf((int)polynom[0]) + " ";
-            }
-            if ((int)polynom[0] < 0){
-                ourPolyinom = ourPolyinom + "- " +String.valueOf(-(int)polynom[0]) + " ";
-            }
-        }else{
-            if ((int)polynom[0] > 0){
-                ourPolyinom = ourPolyinom  + String.valueOf(polynom[0])  + " ";
-            }
-            if ((int)polynom[0] < 0){
-                ourPolyinom = ourPolyinom + "- " +String.valueOf(-polynom[0])  + " ";
-            }
-        }
-        for (int i = 1; i < polynom.length;i++){
-            if(polynom[i] == 0.0) continue;
-            if (polynom[i] == 1.0){
-                ourPolyinom = ourPolyinom + "+ x^" + String.valueOf(i) + " ";
-                continue;
-            }
-            if (polynom[i] == -1.0){
-                ourPolyinom = ourPolyinom + "- x^" + String.valueOf(i) + " ";
-                continue;
-            }
-            if (polynom[i] == (int)polynom[i]){
-                if ((int)polynom[i] > 0){
-                    ourPolyinom = ourPolyinom + "+ " +String.valueOf((int)polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-                if ((int)polynom[i] < 0){
-                    ourPolyinom = ourPolyinom + "- " +String.valueOf(-(int)polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-            }else{
-                if ((int)polynom[i] > 0){
-                    ourPolyinom = ourPolyinom + "+ " +String.valueOf(polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-                if ((int)polynom[i] < 0){
-                    ourPolyinom = ourPolyinom + "- " +String.valueOf(-polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-            }
-        }
-        ourPolyinom = ourPolyinom + ")";
-        return ourPolyinom;
-    }
-
-    public static double returnvalue(double x, double[]polynom){
-        double sum = polynom[0];
-        for (int i = 1;i < polynom.length;i++){
-            sum+= polynom[i]*power(x,i);
-        }
-        System.out.println(sum);
-        return sum;
-    }
-
-    public static double power(double x,int exp){
-        if(exp == 0) return 1;
-        if (exp == 1)   return x;
-        double newx = x;
-
-        while (exp >1){
-            newx *= x;
-            exp--;
-        }
-        return newx;
-    }
-
 
     /**
      * Performs tests of part B.
      */
-
     private static void testPartB() {
         System.out.println("-------------------- Tests for part B --------------------");
         rnd = new Random(42);
@@ -238,11 +160,9 @@ public class Main {
         testRootFinding();
     }
 
-
     /**
      * Tests the methods of a given function.
      */
-
     private static void testFunction(Function function, String name, int taylorMaxOrder) {
         System.out.println(name + ": " + function);
         System.out.println(name + " with toString: " + function.toString());
@@ -276,7 +196,6 @@ public class Main {
      * @param num The number to round
      * @return The rounded number
      */
-
     private static double roundThreePlaces(double num) {
         return Double.parseDouble(String.format("%.3f", num));
     }
@@ -327,5 +246,4 @@ public class Main {
             System.out.println(name + " root near " + mid + " and default epsilon: " + function.newtonRaphsonMethod(mid));
         }
     }
-
 }

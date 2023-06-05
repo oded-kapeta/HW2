@@ -8,6 +8,7 @@ public class Sum extends Function{
 
     @Override
     public String toString() {
+        /*
         String s1 = "";
         String s2 = "";
         String finalString = "(";
@@ -25,8 +26,9 @@ public class Sum extends Function{
                 s2 = s2 + f2.toString();
             }
         }
-        finalString = s1 + s2 + ")";
-        return finalString;
+        finalString = s1 + " + "  + s2 + ")";
+         */
+        return "(" + f1.toString() + " + " + f2.toString() + ")" ;
     }
 
     @Override

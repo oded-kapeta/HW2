@@ -11,6 +11,7 @@ public class MultiSum extends Function{
 
     @Override
     public String toString() {
+        /*
         String finalString = "(" ;
         if (!(first.toString().equals("0")) && first.getClass() == Constant.class){
             finalString = finalString + "(" + first.toString() + ")" + " + ";
@@ -29,6 +30,13 @@ public class MultiSum extends Function{
             finalString = finalString + " + ";
         }
         finalString = finalString + ")";
+         */
+        String finalString = "(" + first.toString() + " + ";
+        for (int i = 0; i < fx.length;i++){
+            finalString = finalString + fx[i].toString();
+            if (i == fx.length-1)   break;
+            finalString += " + ";
+        }
         return finalString;
     }
 

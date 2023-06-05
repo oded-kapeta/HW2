@@ -7,7 +7,9 @@ public class Constant extends Function{
 
     @Override
     public String toString() {
-        if (this.constant == (int)constant) return String.valueOf((int)constant);
+        if (this.constant == (int)constant){
+            return  "(" + String.valueOf((int)constant) + ")";
+        }
         return "(" + String.valueOf(this.constant) + ")";
     }
 
