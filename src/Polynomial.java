@@ -21,72 +21,50 @@ public class Polynomial extends Function{
                 ourPolynom += String.valueOf(polynom[0]);
             }
         }else{
+            /*
             for(int i = 0; i< polynom.length;i++){
                 if (polynom[i] == 0.0 )   continue;
-                ourPolynom += new Product(polynom[i],new Power(new Polynomial(0,1),i))
-                        .toString();
-                if (i == polynom.length - 1)    break;
-                if (polynom[i+1] == 0.0)   continue;
-                ourPolynom += " + ";
-            }
+                if (polynom[i] > 0.0){
+                    ourPolynom += new Product(polynom[i],new Power(new Polynomial(0,1),i))
+                            .toString();
+                    if (i == polynom.length - 1)    break;
+                    if (polynom[i+1] == 0.0 && i == polynom.length - 2 )   continue;
+                    ourPolynom += " + ";
+                }else{
+                    ourPolynom += new Product(Math.abs(polynom[i]),new Power(new Polynomial(0,1),i))
+                            .toString();
+                    if (i == polynom.length - 1)    break;
+                    if (polynom[i+1] == 0.0 && i == polynom.length - 2 )   continue;
+                    ourPolynom += " - ";
+                }
+
+             */
+           // int sum = 0;
+            //for (int i = 0; i < polynom.length; i++){
+              // sum += polynom[i];
+            //if (sum == 0.0){
+               // ourPolynom += String.valueOf(0);
+
+                for (int i = 0; i < polynom.length; i++) {
+                    if (polynom[i] == 0.0) continue;
+                    if (polynom[i] > 0.0) {
+                        if (ourPolynom.equals("(")) {
+                            ourPolynom += new Product(polynom[i], new Power(new Polynomial(0, 1), i)).toString();
+                        } else {
+                            ourPolynom += " + ";
+                            ourPolynom += new Product(polynom[i], new Power(new Polynomial(0, 1), i)).toString();
+                        }
+                    } else {
+                        if (ourPolynom.equals("(")) {
+                            ourPolynom += new Product(polynom[i], new Power(new Polynomial(0, 1), i)).toString();
+                        } else {
+                            ourPolynom += " - ";
+                            ourPolynom += new Product(Math.abs(polynom[i]), new Power(new Polynomial(0, 1), i)).toString();
+                        }
+                    }
+                }
         }
         ourPolynom += ")";
-
-        /*String ourPolynom = "(";
-        for(int i = 0; i< polynom.length;i++){
-            if (polynom[i] == 0.0 )   continue;
-            ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0,1),i))
-                    .toString();
-            if (i == polynom.length - 1)    break;
-            ourPolynom += " + ";
-        }
-        ourPolynom += ")";
-
-         */
-        /*
-        if (polynom[0] == (int)polynom[0]){
-            if ((int)polynom[0] > 0){
-                ourPolynom = ourPolynom + String.valueOf((int)polynom[0]) + " ";
-            }
-            if ((int)polynom[0] < 0){
-                ourPolynom = ourPolynom + "- " +String.valueOf(-(int)polynom[0]) + " ";
-            }
-        }else{
-            if ((int)polynom[0] > 0){
-                ourPolynom = ourPolynom + String.valueOf(polynom[0])  + " ";
-            }
-            if ((int)polynom[0] < 0){
-                ourPolynom = ourPolynom + "- " +String.valueOf(-polynom[0])  + " ";
-            }
-        }
-        for (int i = 1; i < this.polynom.length;i++){
-            if(polynom[i] == 0.0) continue;
-            if (polynom[i] == 1.0){
-                ourPolynom = ourPolynom + "+ x^" + String.valueOf(i) + " ";
-                continue;
-            }
-            if (polynom[i] == -1.0){
-                ourPolynom = ourPolynom + "- x^" + String.valueOf(i) + " ";
-                continue;
-            }
-            if (polynom[i] == (int)polynom[i]){
-                if ((int)polynom[i] > 0){
-                    ourPolynom = ourPolynom + "+ " +String.valueOf((int)polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-                if ((int)polynom[i] < 0){
-                    ourPolynom = ourPolynom + "- " +String.valueOf(-(int)polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-            }else{
-                if ((int)polynom[i] > 0){
-                    ourPolynom = ourPolynom + "+ " +String.valueOf(polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-                if ((int)polynom[i] < 0){
-                    ourPolynom = ourPolynom + "- " +String.valueOf(-polynom[i]) + "x^" + String.valueOf(i) + " ";
-                }
-            }
-        }
-         */
-
         return ourPolynom;
     }
 

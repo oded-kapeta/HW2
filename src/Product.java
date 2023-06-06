@@ -33,8 +33,8 @@ public class Product extends Function{
         if (function2 == null) {
             if (((Power) function1).isX() == true) {
                 if ((((Power) function1).isExponentZero()) == true) {
-                    if ((int) mekadem == mekadem) {
-                        return String.valueOf((int) mekadem);
+                    if ((int)mekadem == mekadem) {
+                        return String.valueOf((int)mekadem);
                     }
                     return String.valueOf(mekadem);
                 }
