@@ -65,7 +65,6 @@ public abstract class Function {
         for (int i=1; i<=n;i++)
         {
             factorial = factorial*i;
-            //System.out.println("the factorial is: " + factorial);
             arr[i] = derivative.valueAt(0)/factorial;
             derivative = derivative.derivative();
         }

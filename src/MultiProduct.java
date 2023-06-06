@@ -2,16 +2,6 @@ public class MultiProduct extends Function{
     private Function [] fx;
     private Function first;
     public MultiProduct(Function firstFunction,Function...arr){
-
-        /*
-        fx = new Function[arr.length+1];
-        fx[0] = firstFunction;
-        for (int i = 1; i < arr.length;i++){
-            fx[i] = arr[i-1];
-        }
-
-         */
-
         this.first = firstFunction;
         fx = new Function[arr.length];
         for (int i = 0; i < arr.length;i++){
@@ -23,14 +13,6 @@ public class MultiProduct extends Function{
     @Override
     public String toString() {
         String finalString = "(" ;
-       /* if (!(first.toString().equals("1")) && first.getClass() == Constant.class){
-            finalString = finalString  + first.toString()  + " * ";
-        }
-        if (!(first.toString().equals("1")) && first.getClass() != Constant.class){
-            finalString = finalString  + first.toString() + " * " ;
-        }
-
-        */
         if (!(first.toString().equals("1"))){
             finalString = finalString  + first.toString() + " * " ;
         }
@@ -46,12 +28,6 @@ public class MultiProduct extends Function{
 
     @Override
     public double valueAt(double x) {
-        /*double sum = fx[0].valueAt(x);
-        for (int i = 1; i < fx.length;i++){
-            sum *= fx[i].valueAt(x);
-        }
-        return sum;
-         */
         double sum = first.valueAt(x);
         for (int i = 0; i < fx.length;i++){
             sum *= fx[i].valueAt(x);
@@ -61,60 +37,6 @@ public class MultiProduct extends Function{
 
     @Override
     public Function derivative() {
-        /*
-        if (fx.length == 2){
-            return new Product(fx[0],fx[1]).derivative();
-        }
-        Function [] temp = new Function[fx.length-1];
-        for (int i = 0;i < temp.length;i++){
-            temp[i] = fx[i+1];
-        }
-        Function multi1 = new MultiProduct(fx[0].derivative(),temp);
-
-        Function [] tempArr = new Function[fx.length-1];
-        Function [] finalArr = new Function[fx.length-1];
-        for (int i = 1; i < fx.length;i++){
-            for (int j = 0; j < i;j++){
-                tempArr[j] = fx[j];
-            }
-            for (int j = i; j < tempArr.length;j++){
-                tempArr[j] = fx[j];
-            }
-            finalArr[i] = new MultiProduct(fx[0].derivative(), tempArr);
-        }
-        return new MultiSum(multi1, finalArr);
-         */
-
-        /*
-        if (fx.length == 1){
-            return new Product(first,fx[0]).derivative();
-        }
-        Function [] arrUnit = new Function[fx.length + 1];
-        arrUnit[0] = first;
-        for (int i = 0; i < fx.length;i++){
-            arrUnit[i+1] = fx[i];
-        }
-        Function [] tempArr = new Function[arrUnit.length-1];
-        Function [] finalArr = new Function[arrUnit.length];
-        for (int i = 0; i < arrUnit.length;i++){
-            for (int j = 0; j < i;j++){
-                tempArr[j] = arrUnit[j];
-            }
-            if (tempArr[0] == null){
-                for (int j = i; j < tempArr.length;j++){
-                    tempArr[j] = arrUnit[j+1];
-                }
-            }else{
-                for (int j = i+1; j < tempArr.length+1;j++){
-                    tempArr[j-1] = arrUnit[j];
-                }
-            }
-
-            finalArr[i] = new MultiProduct(arrUnit[i].derivative(), tempArr);
-        }
-        return new MultiSum(new Constant(0), finalArr);
-
-         */
         if (fx.length == 1){
             return new Product(first,fx[0]).derivative();
         }

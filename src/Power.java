@@ -45,15 +45,6 @@ public class Power extends Function{
 
     public boolean isX() {
         double[] arr = {0,1};
-        /*
-        System.out.println(((Polynomial)function).getPolynom());
-        System.out.println(this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr));
-        if (this.function.getClass() == Polynomial.class && ((Polynomial)function).getPolynom().equals(arr)) {
-            System.out.println(((Polynomial)function).getPolynom());
-        }
-        return false;
-
-         */
 
 
 

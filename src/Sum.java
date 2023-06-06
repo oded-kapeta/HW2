@@ -8,26 +8,6 @@ public class Sum extends Function{
 
     @Override
     public String toString() {
-        /*
-        String s1 = "";
-        String s2 = "";
-        String finalString = "(";
-        if (!(f1.toString().equals("0"))){
-            if(f1.getClass() == Constant.class){
-                s1 = s1 +  "(" + f1.toString() + ")";
-            }else {
-                s1 = s1 + f1.toString();
-            }
-        }
-        if (!(f2.toString().equals("0"))){
-            if(f2.getClass() == Constant.class){
-                s2 = s2 +  "(" + f2.toString() + ")";
-            }else {
-                s2 = s2 + f2.toString();
-            }
-        }
-        finalString = s1 + " + "  + s2 + ")";
-         */
         return "(" + f1.toString() + " + " + f2.toString() + ")" ;
     }
 

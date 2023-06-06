@@ -13,23 +13,6 @@ public class Product extends Function{
 
     @Override
     public String toString() {
-        /*
-        if (function1.getClass() == Constant.class && function2.getClass() == Power.class ){
-            if (((Power)function2).isX() == true){
-                if ((((Power)function2).isExponentZero()) == true){
-                    return function1.toString();
-                }
-                if (((Constant)function1).getConstant() == 1){
-                    return  function2.toString();
-                }
-                if (((Constant)function1).getConstant() == -1){
-                    return function2.toString();
-                }
-                return function1.toString() + function2.toString();
-            }
-        }
-
-         */
         if (function2 == null) {
             if (((Power) function1).isX() == true) {
                 if ((((Power) function1).isExponentZero()) == true) {

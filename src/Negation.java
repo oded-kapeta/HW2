@@ -17,6 +17,5 @@ public class Negation extends Function{
     @Override
     public Function derivative() {
         return new Negation(f1.derivative());
-        //return new Product(new Constant(-1.0),f1.derivative());
     }
 }
