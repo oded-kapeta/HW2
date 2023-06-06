@@ -10,6 +10,7 @@ public class Power extends Function{
     public String toString() {
         if (isX() == true){
             if (exponent == 1)  return "x";
+            if (exponent == 0)  return "1";
             return "x^" + String.valueOf(exponent);
         }
         return "(" + this.function.toString() + "^" + String.valueOf(exponent)  + ")";

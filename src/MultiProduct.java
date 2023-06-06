@@ -39,6 +39,9 @@ public class MultiProduct extends Function{
 
     @Override
     public Function derivative() {
+        if (fx.length == 1){
+            return new Product(first,fx[0]).derivative();
+        }
         Function [] arrUnit = new Function[fx.length + 1];
         arrUnit[0] = first;
         for (int i = 0; i < fx.length;i++){
@@ -50,7 +53,7 @@ public class MultiProduct extends Function{
             for (int j = 0; j < i;j++){
                 tempArr[j] = arrUnit[j];
             }
-            for (int j = i+1; j < tempArr.length;j++){
+            for (int j = i; j < tempArr.length;j++){
                 tempArr[j] = arrUnit[j];
             }
             finalArr[i] = new MultiProduct(arrUnit[i].derivative(), tempArr);

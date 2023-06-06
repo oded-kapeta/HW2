@@ -1,11 +1,10 @@
 public class MultiSum extends Function{
     private Function [] fx;
-    private Function first;
     public MultiSum(Function firstFunction,Function...arr){
-        this.first = firstFunction;
-        fx = new Function[arr.length];
-        for (int i = 0; i < arr.length;i++){
-            fx[i] = arr[i];
+        fx = new Function[arr.length+1];
+        fx[0] = firstFunction;
+        for (int i = 1; i < fx.length;i++){
+            fx[i] = arr[i-1];
         }
     }
 
@@ -31,7 +30,7 @@ public class MultiSum extends Function{
         }
         finalString = finalString + ")";
          */
-        String finalString = "(" + first.toString() + " + ";
+        String finalString = "(";
         for (int i = 0; i < fx.length;i++){
             finalString = finalString + fx[i].toString();
             if (i == fx.length-1)   break;
@@ -43,7 +42,6 @@ public class MultiSum extends Function{
     @Override
     public double valueAt(double x) {
         double sum = 0;
-        sum += first.valueAt(x);
         for (int i = 0 ;i < fx.length;i++){
             sum += fx[i].valueAt(x);
         }
@@ -52,10 +50,10 @@ public class MultiSum extends Function{
 
     @Override
     public Function derivative() {
-        Function [] array = new Function[fx.length];
-        for (int i = 0 ;i < fx.length;i++){
-            array[i] = fx[i].derivative();
+        Function [] array = new Function[fx.length-1];
+        for (int i = 0 ;i < array.length ;i++){
+            array[i] = fx[i+1].derivative();
         }
-        return new MultiSum(first.derivative(),array);
+        return new MultiSum(fx[0].derivative(),array);
     }
 }

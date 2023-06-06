@@ -12,18 +12,27 @@ public class Polynomial extends Function{
 
     @Override
     public String toString() {
+
         String ourPolynom = "(";
-        for(int i = 0; i< polynom.length;i++){
-            if (polynom[i] == 0.0 )   continue;
-            ourPolynom += new Product(polynom[i],new Power(new Polynomial(0,1),i))
-                    .toString();
-            if (i == polynom.length - 1)    break;
-            if (polynom[i+1] == 0.0)   continue;
-            ourPolynom += " + ";
+        if (polynom.length == 1){
+            if ((int)polynom[0] == polynom[0]){
+                ourPolynom += String.valueOf((int)polynom[0]);
+            }else{
+                ourPolynom += String.valueOf(polynom[0]);
+            }
+        }else{
+            for(int i = 0; i< polynom.length;i++){
+                if (polynom[i] == 0.0 )   continue;
+                ourPolynom += new Product(polynom[i],new Power(new Polynomial(0,1),i))
+                        .toString();
+                if (i == polynom.length - 1)    break;
+                if (polynom[i+1] == 0.0)   continue;
+                ourPolynom += " + ";
+            }
         }
         ourPolynom += ")";
-        /*
-        String ourPolynom = "(";
+
+        /*String ourPolynom = "(";
         for(int i = 0; i< polynom.length;i++){
             if (polynom[i] == 0.0 )   continue;
             ourPolynom += new Product(new Constant(polynom[i]),new Power(new Polynomial(0,1),i))
@@ -84,6 +93,7 @@ public class Polynomial extends Function{
     @Override
     public double valueAt(double x) {
         //System.out.println(polynom.length);
+        //System.out.println( "length of polynom is: " + polynom.length);
         double sum = polynom[0];
         for (int i = 1;i < polynom.length;i++){
             sum+= polynom[i]*Math.pow(x,i);
@@ -107,6 +117,9 @@ public class Polynomial extends Function{
         }
 
          */
+        if (polynom.length == 1){
+            return new Polynomial(0.0);
+        }
         double arr [] = new double[polynom.length-1];
         for (int i = 0; i < arr.length;i++){
             arr[i] = (i+1)*polynom[i+1];

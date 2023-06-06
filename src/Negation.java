@@ -6,10 +6,7 @@ public class Negation extends Function{
 
     @Override
     public String toString() {
-        if (f1.getClass() == Constant.class){
-            return "-(" + f1.toString() +")";
-        }
-        return "-" + f1.toString();
+        return "(-" + f1.toString() +")";
     }
 
     @Override
