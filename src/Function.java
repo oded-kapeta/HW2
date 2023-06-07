@@ -49,7 +49,7 @@ public abstract class Function {
     }
 
     /**
-     * this function calculates the roots of the given function with an error of 10^-5 using the newton raphson method
+     * this method calculates the roots of the given function with an error of 10^-5 using the newton raphson method
      * @param a
      * @return the roots of the function
      */
@@ -66,7 +66,7 @@ public abstract class Function {
 
 
     /**
-     * this function calculates the roots of the given function with an error of epsilon using the newton raphson method
+     * this method calculates the roots of the given function with an error of epsilon using the newton raphson method
      * @param a
      * @param epsilon
      * @return the roots of the function
@@ -83,7 +83,7 @@ public abstract class Function {
 
 
     /**
-     * this function returns the taylor polynom with the order of n (around 0) of the given function
+     * this method calculates the taylor polynom with the order of n (around 0) of the given function
      * @param n
      * @return the taylor polynom of the function
      */
