@@ -1,4 +1,8 @@
 public class Date {
+    final int MAX_YEAR = 3999;
+    final int MAX_DAY = 31;
+    final int MAX_MONTH = 12;
+    final int MAX = MAX_DAY+MAX_YEAR+MAX_YEAR;
     public int day = 1;
     public int month = 1;
     public int year = 0;
@@ -64,7 +68,7 @@ public class Date {
      */
     @Override
     public int hashCode() {
-        return 3999*this.year + 31*this.day + 12*this.month;
+        return MAX*this.year + MAX*this.day + MAX*this.month;
     }
 
     /**
@@ -72,7 +76,7 @@ public class Date {
      * @param day
      */
     public void setDay(int day) {
-        if (day >=1 && day<=31) this.day = day;
+        if (day >=1 && day<=MAX_DAY) this.day = day;
     }
 
     /**
@@ -80,7 +84,7 @@ public class Date {
      * @param month
      */
     public void setMonth(int month) {
-        if(month <=12 && month>=1)  this.month = month;
+        if(month <=MAX_MONTH && month>=1)  this.month = month;
     }
 
     /**
@@ -88,6 +92,6 @@ public class Date {
      * @param year
      */
     public void setYear(int year) {
-        if(year<=3999 && year>=-3999)   this.year = year;
+        if(year<=MAX_YEAR && year>=-3999)   this.year = year;
     }
 }

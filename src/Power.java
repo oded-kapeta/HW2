@@ -64,7 +64,8 @@ public class Power extends Function{
 
 
     /**
-     *
+     * this function check if the parameter we want use power on i x
+     * @return true if so, and false either
      */
     public boolean isX() {
         double[] arr = {0,1};

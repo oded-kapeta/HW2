@@ -120,7 +120,7 @@ public abstract class Function {
 
     /**
      * this method calculates the value of the given function at x
-     * @param x
+     * @param x - where we want to calculate our value
      * @return the value of the function in double format
      */
     public abstract double valueAt(double x);
