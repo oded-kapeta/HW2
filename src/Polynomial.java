@@ -9,7 +9,9 @@ public class Polynomial extends Function{
         }
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
 
@@ -44,6 +46,10 @@ public class Polynomial extends Function{
         return ourPolynom;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double valueAt(double x) {
         double sum = polynom[0];
@@ -53,6 +59,10 @@ public class Polynomial extends Function{
         return sum;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Function derivative() {
         if (polynom.length == 1){
@@ -65,10 +75,21 @@ public class Polynomial extends Function{
         return new Polynomial(arr);
     }
 
+
+    /**
+     * this method returns the length of the polynom
+     * @return
+     */
     public int getLength(){
         return polynom.length;
     }
 
+
+    /**
+     * this method returns the value of the polynom in
+     * @param i
+     * @return
+     */
     public double getPlace(int i){
         return polynom[i];
     }

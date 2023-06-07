@@ -1,6 +1,13 @@
 public class MultiProduct extends Function{
     private Function [] fx;
     private Function first;
+
+
+    /**
+     * constructor for multiproduct
+     * @param firstFunction the first function af the multiproduct
+     * @param arr the remaining functions of the multiproduct
+     */
     public MultiProduct(Function firstFunction,Function...arr){
         this.first = firstFunction;
         fx = new Function[arr.length];
@@ -10,6 +17,10 @@ public class MultiProduct extends Function{
 
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         String finalString = "(" ;
@@ -26,6 +37,10 @@ public class MultiProduct extends Function{
         return finalString;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double valueAt(double x) {
         double sum = first.valueAt(x);
@@ -35,6 +50,10 @@ public class MultiProduct extends Function{
         return sum;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Function derivative() {
         if (fx.length == 1){

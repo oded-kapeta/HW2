@@ -1,4 +1,11 @@
 public abstract class Function {
+    /**
+     * this function calculates the roots of the given function with an error of epsilon using the bisection method
+     * @param a
+     * @param b
+     * @param epsilon
+     * @return the roots of the function
+     */
     public double bisectionMethod(double a, double b, double epsilon)
     {
         double left = a;
@@ -16,6 +23,13 @@ public abstract class Function {
         return ((left+right)/2);
 
     }
+
+    /**
+     * this function calculates the roots of the given function with an error of 10^-5 using the bisection method
+     * @param a
+     * @param b
+     * @return the roots of the function
+     */
     public double bisectionMethod(double a, double b)
     {
         double left = a;
@@ -34,6 +48,11 @@ public abstract class Function {
         return ((left+right)/2);
     }
 
+    /**
+     * this function calculates the roots of the given function with an error of 10^-5 using the newton raphson method
+     * @param a
+     * @return the roots of the function
+     */
     public double newtonRaphsonMethod(double a)
     {
         double xK = a;
@@ -45,6 +64,13 @@ public abstract class Function {
         return xK;
     }
 
+
+    /**
+     * this function calculates the roots of the given function with an error of epsilon using the newton raphson method
+     * @param a
+     * @param epsilon
+     * @return the roots of the function
+     */
     public double newtonRaphsonMethod(double a, double epsilon)
     {
         double xK = a;
@@ -55,6 +81,12 @@ public abstract class Function {
         return xK;
     }
 
+
+    /**
+     * this function returns the taylor polynom with the order of n (around 0) of the given function
+     * @param n
+     * @return the taylor polynom of the function
+     */
     public Function taylorPolynomial(int n)
     {
         int counter = 0;
@@ -77,10 +109,26 @@ public abstract class Function {
         return new Polynomial(arr);
     }
 
+
+    /**
+     * this method recieves the given function and returns it in a string format
+     * @return
+     */
     @Override
     public abstract String toString();
 
+
+    /**
+     * this method calculates the value of the given function at x
+     * @param x
+     * @return the value of the function in double format
+     */
     public abstract double valueAt(double x);
 
+
+    /**
+     * this method calculates the derivative of the given function
+     * @return the derivative (a function)
+     */
     public abstract Function derivative();
 }

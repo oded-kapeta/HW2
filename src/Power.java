@@ -1,11 +1,22 @@
 public class Power extends Function{
     private int exponent;
     private Function function;
+
+
+    /**
+     * constructor for power
+     * @param function1 the function
+     * @param exponent1 the exponent of the function
+     */
     public Power(Function function1,int exponent1){
         this.exponent = exponent1;
         this.function = function1;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         if (isX() == true){
@@ -16,6 +27,10 @@ public class Power extends Function{
         return "(" + this.function.toString() + "^" + String.valueOf(exponent)  + ")";
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double valueAt(double x) {
         if (exponent == 0)  return 1;
@@ -23,6 +38,10 @@ public class Power extends Function{
         return Math.pow(value,exponent);
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Function derivative() {
         double[] arr = {0,1};
@@ -43,6 +62,10 @@ public class Power extends Function{
         return new Product(new Constant(1),function.derivative());
     }
 
+
+    /**
+     *
+     */
     public boolean isX() {
         double[] arr = {0,1};
 
@@ -59,6 +82,11 @@ public class Power extends Function{
 
     }
 
+
+    /**
+     * this method check if the current exponent is equal to zero
+     * @return true if the exponent is zero and false otherwise
+     */
     public boolean isExponentZero(){
         if(this.exponent == 0)    return true;
         return false;

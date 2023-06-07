@@ -1,5 +1,11 @@
 public class MultiSum extends Function{
     private Function [] fx;
+
+    /**
+     * this method is the constractor of multisum
+     * @param firstFunction the first function in the multisum
+     * @param arr the rest of the functions in the multisum
+     */
     public MultiSum(Function firstFunction,Function...arr){
             fx = new Function[arr.length + 1];
             fx[0] = firstFunction;
@@ -8,6 +14,10 @@ public class MultiSum extends Function{
             }
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         String finalString = "(";
@@ -20,6 +30,10 @@ public class MultiSum extends Function{
         return finalString;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double valueAt(double x) {
         double sum = 0;
@@ -29,6 +43,10 @@ public class MultiSum extends Function{
         return sum;
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Function derivative() {
         Function [] array = new Function[fx.length-1];
